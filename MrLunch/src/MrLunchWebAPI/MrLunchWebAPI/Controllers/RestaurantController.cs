@@ -35,6 +35,9 @@ namespace MrLunchWebAPI.Controllers
         [HttpGet("{id}")]
         public Restaurant GetRestaurant(string id)
         {
+            var isValidateData = !string.IsNullOrWhiteSpace(id);
+            if (!isValidateData) return new Restaurant();
+
             return _collectionRestaurants.Find(it => it.Id == id).FirstOrDefault();
         }
 
@@ -57,7 +60,7 @@ namespace MrLunchWebAPI.Controllers
             if (!isValidateData) return new Response { IsSuccess = false, ErrorMessage = "Data can not be empty" };
 
             var restaurant = _collectionRestaurants.Find(it => it.Id == id).FirstOrDefault();
-            if (restaurant == null) { return new Response { IsSuccess = false, ErrorMessage = "Restaurant id can not found" }; }
+            if (restaurant == null) { return new Response { IsSuccess = false, ErrorMessage = "Restaurant not found" }; }
 
             model.Id = Guid.NewGuid().ToString();
             var menus = restaurant.Menus.ToList();
