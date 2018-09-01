@@ -43,7 +43,7 @@ export class CreatlistPage {
     this.httpClient.post("https://mrlunch.azurewebsites.net/api/polls/createpoll",this.model, option)
     .subscribe((data:any)=>{
       if(data.isSuccess) {
-        this.navCtrl.push(ChoosemenuPage);
+        this.navCtrl.popToRoot();
       }
       else alert(data.errorMessage);
     },error=>{

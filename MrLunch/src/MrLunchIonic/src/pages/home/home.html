@@ -10,8 +10,22 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content >
-    <!-- <button ion-button block (click)="Gomanage()">เพิ่มลิสต์อาหารประจำวัน</button> -->
-    <button ion-button block (click)="createpoll()">เพิ่มลิสต์อาหารประจำวัน</button>
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <button *ngIf="model == null" ion-button block (click)="createpoll()">เพิ่มลิสต์อาหารประจำวัน</button>
+
+  <div *ngIf="model != null">
+    <h3 align="center">ลิสต์สั่งอาหาร</h3>
+    <p align="center">{{ model.restaurantName }}</p>
+    <p align="center">{{ model.closedDate }}</p>
+    <ion-list>
+      <ion-item *ngFor="let item of model.menuPolls" (click)="selectmenu(item.id)">
+        {{ item.name }}
+      </ion-item>
+    </ion-list>
+  </div>
 
 </ion-content>
