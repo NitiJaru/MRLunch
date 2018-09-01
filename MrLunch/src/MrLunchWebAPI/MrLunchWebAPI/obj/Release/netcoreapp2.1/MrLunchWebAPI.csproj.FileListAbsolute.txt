@@ -1,0 +1,15 @@
+C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\bin\Release\netcoreapp2.1\MrLunchWebAPI.deps.json
+C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\bin\Release\netcoreapp2.1\MrLunchWebAPI.runtimeconfig.json
+C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\bin\Release\netcoreapp2.1\MrLunchWebAPI.runtimeconfig.dev.json
+C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\bin\Release\netcoreapp2.1\MrLunchWebAPI.dll
+C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\bin\Release\netcoreapp2.1\MrLunchWebAPI.pdb
+C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\obj\Release\netcoreapp2.1\MrLunchWebAPI.csprojAssemblyReference.cache
+C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\obj\Release\netcoreapp2.1\MrLunchWebAPI.csproj.CoreCompileInputs.cache
+C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\obj\Release\netcoreapp2.1\MrLunchWebAPI.RazorAssemblyInfo.cache
+C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\obj\Release\netcoreapp2.1\MrLunchWebAPI.RazorAssemblyInfo.cs
+C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\obj\Release\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\obj\Release\netcoreapp2.1\MrLunchWebAPI.AssemblyInfoInputs.cache
+C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\obj\Release\netcoreapp2.1\MrLunchWebAPI.AssemblyInfo.cs
+C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\obj\Release\netcoreapp2.1\MrLunchWebAPI.RazorTargetAssemblyInfo.cache
+C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\obj\Release\netcoreapp2.1\MrLunchWebAPI.dll
+C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\obj\Release\netcoreapp2.1\MrLunchWebAPI.pdb
