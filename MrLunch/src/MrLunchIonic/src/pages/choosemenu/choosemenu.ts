@@ -16,6 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class ChoosemenuPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.navCtrl.remove(this.navCtrl.length()-1);
   }
 
   ionViewDidLoad() {

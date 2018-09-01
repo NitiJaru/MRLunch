@@ -1,13 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ChoosemenuPage } from '../choosemenu/choosemenu';
-
-/**
- * Generated class for the CreatlistPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { HttpClient } from '@angular/common/http';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/timeout';
 
 @IonicPage()
 @Component({
@@ -16,14 +12,44 @@ import { ChoosemenuPage } from '../choosemenu/choosemenu';
 })
 export class CreatlistPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  response: any;
+
+  listmenu: any;
+  model: any = { };
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private httpClient: HttpClient) {
+
+    this.httpClient.get("https://mrlunch.azurewebsites.net/api/Restaurant/GetRestaurants")
+    .subscribe((data:any)=>{
+        this.response = data;
+    },error=>{
+      alert(error.message);
+    });
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CreatlistPage');
+  onchangeshop(){
+    this.response.forEach(element => {
+      if(element.id == this.model.restaurantId){
+        this.model.restaurantName = element.name;
+        this.listmenu = element.menus;
+      }
+    });
   }
-  GochooseMenu(){
-    this.navCtrl.push(ChoosemenuPage);
+
+  submit(){
+    
+    let option = { "headers": { "Content-Type": "application/json" }};
+    this.httpClient.post("https://mrlunch.azurewebsites.net/api/polls/createpoll",this.model, option)
+    .subscribe((data:any)=>{
+      if(data.isSuccess) {
+        this.navCtrl.push(ChoosemenuPage);
+      }
+      else alert(data.errorMessage);
+    },error=>{
+      alert(error.message);
+    });
+
   }
 
 }
