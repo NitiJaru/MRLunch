@@ -11,7 +11,9 @@ namespace MrLunchWebAPI.Models
         public string RestaurantId { get; set; }
         public string RestaurantName { get; set; }
         public DateTime ClosedDate { get; set; }
-        public int MinimumVote { get; set; }
+        public int VotedPollCount { get; set; }
+        public int MinimumVotePollCount { get; set; }
         public RestaurantMenu DefaultVote { get; set; }
+        public IEnumerable<RestaurantMenuPoll> MenuPolls { get; set; }
     }
 }
