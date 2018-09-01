@@ -10,7 +10,7 @@ namespace MrLunchWebAPI.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class PollController : Controller
+    public class PollsController : Controller
     {
         private const string ConnectionString = @"mongodb://earn:e09545321@ds141872.mlab.com:41872/mrlunch";
         private const string DatabaseName = @"mrlunch";
@@ -21,7 +21,7 @@ namespace MrLunchWebAPI.Controllers
         private IMongoCollection<Restaurant> _collectionRestaurants;
         private IMongoCollection<RestaurantPoll> _collectionRestaurantpolls;
 
-        public PollController()
+        public PollsController()
         {
             var client = new MongoClient(ConnectionString);
             _database = client.GetDatabase(DatabaseName);
@@ -32,13 +32,16 @@ namespace MrLunchWebAPI.Controllers
         [HttpGet]
         public IEnumerable<RestaurantPoll> GetRestaurantPolls()
         {
-            return _collectionRestaurantpolls.Find(it => true).ToList();
+            return _collectionRestaurantpolls.Find(it => true && it.ClosedDate > DateTime.Now).ToList();
         }
 
         [HttpGet("{id}")]
-        public IEnumerable<RestaurantPoll> GetRestaurantPoll(string id)
+        public RestaurantPoll GetRestaurantPoll(string id)
         {
-            return _collectionRestaurantpolls.Find(it => it.Id == id).ToList();
+            var isValidateData = !string.IsNullOrWhiteSpace(id);
+            if (!isValidateData) return new RestaurantPoll();
+
+            return _collectionRestaurantpolls.Find(it => it.Id == id && it.ClosedDate > DateTime.Now).FirstOrDefault();
         }
 
         [HttpPost]
@@ -50,7 +53,7 @@ namespace MrLunchWebAPI.Controllers
             if (!isValidateData) return new Response { IsSuccess = false, ErrorMessage = "Data can not be empty" };
 
             var isClosedDateValid = model.ClosedDate > DateTime.Now;
-            if (!isClosedDateValid) return new Response { IsSuccess = false, ErrorMessage = "CloseDate must More than the current date" };
+            if (!isClosedDateValid) return new Response { IsSuccess = false, ErrorMessage = "CloseDate must more than the current date" };
 
             model.Id = Guid.NewGuid().ToString();
             var restaurant = _collectionRestaurants.Find(it => it.Id == model.RestaurantId).FirstOrDefault();
@@ -58,18 +61,21 @@ namespace MrLunchWebAPI.Controllers
             _collectionRestaurantpolls.InsertOne(model);
             return new Response { IsSuccess = true };
         }
-        
+
         [HttpGet("{id}/{menuid}")]
-        public RestaurantPoll VotePoll(string id, string menuid)
+        public RestaurantPollResult VotePoll(string id, string menuid)
         {
             var validateData = !string.IsNullOrWhiteSpace(id) && !string.IsNullOrWhiteSpace(menuid);
-            if (!validateData) return new RestaurantPoll();
+            if (!validateData) return new RestaurantPollResult { IsSuccess = false, ErrorMessage = "Data can not be empty" };
 
-            var model = _collectionRestaurantpolls.Find(it => it.Id == id).FirstOrDefault();
-            if (model == null) return new RestaurantPoll();
+            var model = _collectionRestaurantpolls.Find(it => it.Id == id ).FirstOrDefault();
+            if (model == null) return new RestaurantPollResult { IsSuccess = false, ErrorMessage = "Poll not found" };
+
+            var isExpiredDate = model.ClosedDate <= DateTime.Now;
+            if (isExpiredDate) return new RestaurantPollResult { IsSuccess = false, ErrorMessage = "Out of date for voting" };
 
             var menu = model.MenuPolls.FirstOrDefault(it => it.Id == menuid);
-            if (menu == null) return new RestaurantPoll();
+            if (menu == null) return new RestaurantPollResult { IsSuccess = false, ErrorMessage = "Menu not found" };
 
             menu.VoteMenuCount++;
             model.VotedPollCount++;
@@ -78,7 +84,7 @@ namespace MrLunchWebAPI.Controllers
             changeMenuCount.Add(menu);
             model.MenuPolls = changeMenuCount;
             _collectionRestaurantpolls.ReplaceOne(it => it.Id == id, model);
-            return model;
+            return new RestaurantPollResult { RestaurantPoll = model, IsSuccess = true };
         }
 
     }
