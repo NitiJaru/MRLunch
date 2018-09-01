@@ -16,24 +16,46 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AddMenuPage {
   getshop: any;
+  models: any;
+  models3: any;
+  mymodel:any = { };
+  constructor(public navCtrl: NavController, public navParams: NavParams, private http: HttpClient) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private http: HttpClient) {
-    console.log('shopid = '+this.navParams.data);
+    console.log('shopid == ' + this.navParams.data);
+  }
+
+  ionViewDidEnter() {
+
+    this.http.get("https://mrlunch.azurewebsites.net/api/Restaurant/GetRestaurant/" + this.navParams.data)
+      .subscribe((data: any) => {
+        this.getshop = data;
+        this.models = data.menus;
+        console.log("getmenu : " + JSON.stringify(this.models));
+      },
+        error => {
+          alert("Error: " + error + "\nError message: " + error.message + "\nError result: " + error.error)
+        });
+
+    // console.log(this.getshop);
+
 
   }
+
 
   ionViewDidLoad() {
- 
+
 
   }
-  back(){
-    // https://mrlunch.azurewebsites.net/api/Restaurant/AddMenuToRestaurant/
+  back() {
+
+    console.log(this.models3);
+    console.log(JSON.stringify(this.navParams.data));
 
     let option = { "headers": { "Content-Type": "application/json" } };
-    // this.callpost = { id: "8", nameitem: "abcde", quantity: 12 };
-    this.http.post("https://mrlunch.azurewebsites.net/api/Restaurant/AddMenuToRestaurant/"+this.navParams.data,
-    this.getshop ,
-      option).subscribe((result: any) => {
+    this.http.post("https://mrlunch.azurewebsites.net/api/restaurant/addmenutorestaurant/" + this.navParams.data,
+      {
+        "name": this.mymodel.name
+      }, option).subscribe((result: any) => {
         this.navCtrl.pop()
         console.log(result);
       }, error => {

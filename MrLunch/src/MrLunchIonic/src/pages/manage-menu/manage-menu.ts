@@ -41,6 +41,6 @@ export class ManageMenuPage {
 
   Gomanage() {
     this.navCtrl.push(AddMenuPage,this.Shopid);
-    // console.log("Showshopid :" +Shopid);
+    console.log("Showshopid :" +this.Shopid);
   }
 }

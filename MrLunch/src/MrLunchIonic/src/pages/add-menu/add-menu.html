@@ -15,6 +15,6 @@
 
 <ion-content padding>
   <h3>เพิ่มรายการอาหาร</h3>
-  <input type="text" >
+  <input type="text" [(ngModel)]="mymodel.name" name="name">
   <button ion-button block (click)="back()">เพิ่ม</button>
 </ion-content>
