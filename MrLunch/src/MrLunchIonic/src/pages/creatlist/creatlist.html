@@ -1,0 +1,39 @@
+<!--
+  Generated template for the CreatlistPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>เพิ่มร้านสั่งอาหาร</ion-title>
+  </ion-navbar>
+  <ion-item>
+  <ion-label>เลือกร้าน</ion-label>
+  <ion-select [(ngModel)]="Select">
+    <ion-option value="f">เป๋าตุง</ion-option>
+    <ion-option value="m">กระเพราแท้</ion-option>
+    <ion-option value="m">พาอร่อย</ion-option>
+  </ion-select>
+</ion-item>
+<ion-item>
+    <ion-input placeholder="เมนู default" clearInput></ion-input>
+  </ion-item><br>
+  <ion-input placeholder="จำนวนคนขั้นต่ำ" clearInput></ion-input>
+  <ion-input placeholder="เวลาปิดให้สั่ง" clearInput></ion-input>
+
+  <ion-row>
+  <ion-col text-center>
+    <button ion-button (click)="GochooseMenu()">OK</button>
+  </ion-col>
+</ion-row>
+
+
+  
+</ion-header>
+
+
+<ion-content padding>
+
+</ion-content>
