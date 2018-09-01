@@ -63,19 +63,20 @@ namespace MrLunchWebAPI.Controllers
         }
 
         [HttpGet("{id}/{menuid}")]
-        public RestaurantPollResult VotePoll(string id, string menuid)
+        public Response VotePoll(string id, string menuid)
         {
             var validateData = !string.IsNullOrWhiteSpace(id) && !string.IsNullOrWhiteSpace(menuid);
-            if (!validateData) return new RestaurantPollResult { IsSuccess = false, ErrorMessage = "Data can not be empty" };
+            if (!validateData) return new Response { IsSuccess = false, ErrorMessage = "Data can not be empty" };
 
-            var model = _collectionRestaurantpolls.Find(it => it.Id == id ).FirstOrDefault();
-            if (model == null) return new RestaurantPollResult { IsSuccess = false, ErrorMessage = "Poll not found" };
+
+            var model = _collectionRestaurantpolls.Find(it => it.Id == id).FirstOrDefault();
+            if (model == null) return new Response { IsSuccess = false, ErrorMessage = "Poll not found" };
 
             var isExpiredDate = model.ClosedDate <= DateTime.Now;
-            if (isExpiredDate) return new RestaurantPollResult { IsSuccess = false, ErrorMessage = "Out of date for voting" };
+            if (isExpiredDate) return new Response { IsSuccess = false, ErrorMessage = "Out of date for voting" };
 
             var menu = model.MenuPolls.FirstOrDefault(it => it.Id == menuid);
-            if (menu == null) return new RestaurantPollResult { IsSuccess = false, ErrorMessage = "Menu not found" };
+            if (menu == null) return new Response { IsSuccess = false, ErrorMessage = "Menu not found" };
 
             menu.VoteMenuCount++;
             model.VotedPollCount++;
@@ -84,8 +85,7 @@ namespace MrLunchWebAPI.Controllers
             changeMenuCount.Add(menu);
             model.MenuPolls = changeMenuCount;
             _collectionRestaurantpolls.ReplaceOne(it => it.Id == id, model);
-            return new RestaurantPollResult { RestaurantPoll = model, IsSuccess = true };
+            return new Response { IsSuccess = true };
         }
-
     }
 }
