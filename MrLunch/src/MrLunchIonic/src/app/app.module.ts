@@ -10,7 +10,7 @@ import { ManageshopPage } from '../pages/manageshop/manageshop';
 import { AddshopPage } from '../pages/addshop/addshop';
 import { AddMenuPage } from '../pages/add-menu/add-menu';
 import { ManageMenuPage } from '../pages/manage-menu/manage-menu';
-
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 @NgModule({
   declarations: [
     MyApp,
@@ -22,6 +22,7 @@ import { ManageMenuPage } from '../pages/manage-menu/manage-menu';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -36,6 +37,7 @@ import { ManageMenuPage } from '../pages/manage-menu/manage-menu';
   providers: [
     StatusBar,
     SplashScreen,
+    HttpClient,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
