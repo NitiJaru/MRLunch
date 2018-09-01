@@ -8,6 +8,10 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { CreatlistPage } from '../pages/creatlist/creatlist';
 import { ChoosemenuPage } from '../pages/choosemenu/choosemenu';
+import { ManageshopPage } from '../pages/manageshop/manageshop';
+import { AddshopPage } from '../pages/addshop/addshop';
+import { AddMenuPage } from '../pages/add-menu/add-menu';
+import { ManageMenuPage } from '../pages/manage-menu/manage-menu';
 
 @NgModule({
   declarations: [
@@ -15,6 +19,11 @@ import { ChoosemenuPage } from '../pages/choosemenu/choosemenu';
     HomePage,
     CreatlistPage,
     ChoosemenuPage
+    HomePage,
+    ManageshopPage,
+    AddshopPage,
+    AddMenuPage,
+    ManageMenuPage,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +35,11 @@ import { ChoosemenuPage } from '../pages/choosemenu/choosemenu';
     HomePage,
     CreatlistPage,
     ChoosemenuPage
+    HomePage,
+    ManageshopPage,
+    AddshopPage,
+    AddMenuPage,
+    ManageMenuPage
   ],
   providers: [
     StatusBar,
