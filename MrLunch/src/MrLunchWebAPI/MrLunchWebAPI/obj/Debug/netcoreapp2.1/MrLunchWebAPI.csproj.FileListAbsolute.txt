@@ -12,3 +12,4 @@ C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\obj\Debu
 C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\obj\Debug\netcoreapp2.1\MrLunchWebAPI.RazorTargetAssemblyInfo.cache
 C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\obj\Debug\netcoreapp2.1\MrLunchWebAPI.dll
 C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\obj\Debug\netcoreapp2.1\MrLunchWebAPI.pdb
+C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs

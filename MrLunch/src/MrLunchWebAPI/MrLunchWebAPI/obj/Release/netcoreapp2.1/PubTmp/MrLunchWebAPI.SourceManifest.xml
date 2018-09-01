@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\Git\00-Hackathons\03-MRLunch\MrLunch\src\MrLunchWebAPI\MrLunchWebAPI\obj\Release\netcoreapp2.1\PubTmp\Out\" />
+</sitemanifest>
