@@ -18,7 +18,7 @@ import { ManageMenuPage } from '../pages/manage-menu/manage-menu';
     MyApp,
     HomePage,
     CreatlistPage,
-    ChoosemenuPage
+    ChoosemenuPage,
     HomePage,
     ManageshopPage,
     AddshopPage,
@@ -34,7 +34,7 @@ import { ManageMenuPage } from '../pages/manage-menu/manage-menu';
     MyApp,
     HomePage,
     CreatlistPage,
-    ChoosemenuPage
+    ChoosemenuPage,
     HomePage,
     ManageshopPage,
     AddshopPage,
