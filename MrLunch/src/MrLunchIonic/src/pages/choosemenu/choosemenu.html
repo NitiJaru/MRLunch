@@ -6,15 +6,20 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar text-center>
     <ion-title>MR.Lunch</ion-title>
   </ion-navbar>
-  <label>ลิสสั่งอาหาร</label><br>
-  <label>วันที่</label><br>
-  <label>ร้าน A</label><br>
-  <label>เวลาปิด 00.00</label>
 
-  <ion-item>
+<ion-row>
+  <ion-col text-left>
+   ลิสสั่งอาหาร &nbsp; :<label></label><br>
+  วันที่ &nbsp; :<label></label><br>
+  ร้าน A &nbsp; :<label></label><br>
+  เวลาปิด &nbsp; :<label></label>
+  </ion-col>
+</ion-row>
+
+  <ion-item text-center>
     <ion-label color="primary"></ion-label>
     <ion-input placeholder="กระเพราหมูกรอบ"></ion-input>
   </ion-item>
@@ -25,7 +30,7 @@
 
   <ion-row>
   <ion-col text-center>
-    <button ion-button (click)="confirm()">OK</button>
+    <button ion-button block (click)="confirm()">ยืนยัน</button>
   </ion-col>
 </ion-row>
 

@@ -18,8 +18,16 @@
   </ion-select>
 </ion-item>
 <ion-item>
-    <ion-input placeholder="เมนู default" clearInput></ion-input>
-  </ion-item><br>
+  <ion-label>เมนู</ion-label>
+  <ion-select [(ngModel)]="Menu" multiple="true">
+    <ion-option>ข้าวหน้าเป็ด</ion-option>
+    <ion-option>เสือร้องไห้</ion-option>
+    <ion-option>ปลาต้มน้ำปลา</ion-option>
+    <ion-option>ปิ้งปลา</ion-option>
+    <ion-option>แกงจืด</ion-option>
+    <ion-option>พิชช่า</ion-option>
+  </ion-select>
+</ion-item>
   <ion-list>
   <ion-item>
     <ion-label color="primary">จำนวนคนขั้นต่ำ :</ion-label>
@@ -33,7 +41,7 @@
 
   <ion-row>
   <ion-col text-center>
-    <button ion-button block (click)="GochooseMenu()">OK</button>
+    <button ion-button block (click)="GochooseMenu()">ยืนยัน</button>
   </ion-col>
 </ion-row>
 
