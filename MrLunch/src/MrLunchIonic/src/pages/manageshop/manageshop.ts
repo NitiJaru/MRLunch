@@ -20,6 +20,7 @@ export class ManageshopPage {
 
   getshop :any;
   constructor(public navCtrl: NavController, public navParams: NavParams,private http: HttpClient) {
+    console.log(this.navParams.data.getshop);
   }
 
   ionViewDidLoad() {
@@ -29,8 +30,12 @@ export class ManageshopPage {
     this.navCtrl.push(AddshopPage);
 
   }
-  managemenu(){
-    this.navCtrl.push(ManageMenuPage);
+  managemenu(shopid){
+    this.navCtrl.push(ManageMenuPage,{
+      getshop : shopid
+    });
+
+    console.log("shopid"+shopid);
   }
 
   ionViewDidEnter() {
@@ -38,9 +43,6 @@ export class ManageshopPage {
     .subscribe((data: any) => {
       this.getshop = data
       console.log(data);
-      this.getshop.length().then(result =>{
-        console.log(result);
-        });
     },
       error => {
         alert("Error: " + error + "\nError message: " + error.message + "\nError result: " + error.error)

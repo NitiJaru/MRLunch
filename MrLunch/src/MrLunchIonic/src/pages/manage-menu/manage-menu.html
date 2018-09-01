@@ -21,8 +21,8 @@
   <button ion-button block (click)="Gomanage()">เพิ่มรายการอาหาร</button>
   <ion-item-group>
     <ion-list-header>3 ร้าน</ion-list-header>
-    <ion-item (click)="managemenu()">กระเพราหมูกรอบไข่ดาว</ion-item>
-    <ion-item (click)="managemenu()">กระเพราหมูไข่ดาว</ion-item>
-    <ion-item (click)="managemenu()">กระเพราไก่ไข่ดาว</ion-item>
+    <ion-item *ngFor="let data of getshop">{{data.name}}
+      <!-- <ion-item *ngFor="let datamenu of data.menus">{{datamenu.name}}</ion-item> -->
+      </ion-item>
   </ion-item-group>
 </ion-content>

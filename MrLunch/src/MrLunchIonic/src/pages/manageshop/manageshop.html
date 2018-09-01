@@ -27,7 +27,6 @@
   <button ion-button block (click)="Addshop()">เพิ่มร้าน</button>
 
   <ion-item-group>
-    <ion-list-header>3 ร้าน</ion-list-header>
-    <ion-item (click)="managemenu()" *ngFor="let data of getshop">{{data.name}}</ion-item>
+    <ion-item (click)="managemenu(data.id)" *ngFor="let data of getshop">{{data.name}}</ion-item>
   </ion-item-group>
 </ion-content>
