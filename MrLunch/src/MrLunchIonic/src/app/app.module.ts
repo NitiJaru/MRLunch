@@ -17,9 +17,6 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
   declarations: [
     MyApp,
     HomePage,
-    CreatlistPage,
-    ChoosemenuPage
-    HomePage,
     ManageshopPage,
     AddshopPage,
     AddMenuPage,
@@ -33,9 +30,6 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    CreatlistPage,
-    ChoosemenuPage
     HomePage,
     ManageshopPage,
     AddshopPage,

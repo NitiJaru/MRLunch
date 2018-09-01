@@ -23,7 +23,7 @@ getshop : any = {};
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddshopPage');
   }
-  back(){
+  back(){ 
     let option = { "headers": { "Content-Type": "application/json" } };
     // this.callpost = { id: "8", nameitem: "abcde", quantity: 12 };
     this.http.post("https://mrlunch.azurewebsites.net/api/Restaurant/CreateRestaurant",

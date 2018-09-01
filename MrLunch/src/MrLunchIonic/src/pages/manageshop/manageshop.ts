@@ -38,6 +38,9 @@ export class ManageshopPage {
     .subscribe((data: any) => {
       this.getshop = data
       console.log(data);
+      this.getshop.length().then(result =>{
+        console.log(result);
+        });
     },
       error => {
         alert("Error: " + error + "\nError message: " + error.message + "\nError result: " + error.error)
