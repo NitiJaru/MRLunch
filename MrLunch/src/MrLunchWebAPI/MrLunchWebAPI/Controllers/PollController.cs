@@ -52,6 +52,10 @@ namespace MrLunchWebAPI.Controllers
                 && !string.IsNullOrWhiteSpace(model.RestaurantName);
             if (!isValidateData) return new Response { IsSuccess = false, ErrorMessage = "Data can not be empty" };
 
+            var poll = _collectionRestaurantpolls.Find(it => true && it.ClosedDate > DateTime.Now).FirstOrDefault();
+            var isPollAlreadyExist = poll != null;
+            if (isPollAlreadyExist) return new Response { IsSuccess = false, ErrorMessage = "Poll has been created already, Can not create any more" };
+
             var isClosedDateValid = model.ClosedDate > DateTime.Now;
             if (!isClosedDateValid) return new Response { IsSuccess = false, ErrorMessage = "CloseDate must more than the current date" };
 
@@ -67,8 +71,7 @@ namespace MrLunchWebAPI.Controllers
         {
             var validateData = !string.IsNullOrWhiteSpace(id) && !string.IsNullOrWhiteSpace(menuid);
             if (!validateData) return new Response { IsSuccess = false, ErrorMessage = "Data can not be empty" };
-
-
+            
             var model = _collectionRestaurantpolls.Find(it => it.Id == id).FirstOrDefault();
             if (model == null) return new Response { IsSuccess = false, ErrorMessage = "Poll not found" };
 
