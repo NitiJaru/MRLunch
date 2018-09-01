@@ -1,0 +1,7 @@
+{
+  "name": "MrLunchIonic",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
