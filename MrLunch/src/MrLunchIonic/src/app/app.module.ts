@@ -21,6 +21,8 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     AddshopPage,
     AddMenuPage,
     ManageMenuPage,
+    CreatlistPage,
+    ChoosemenuPage,
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,9 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     ManageshopPage,
     AddshopPage,
     AddMenuPage,
-    ManageMenuPage
+    ManageMenuPage,
+    CreatlistPage,
+    ChoosemenuPage,
   ],
   providers: [
     StatusBar,
