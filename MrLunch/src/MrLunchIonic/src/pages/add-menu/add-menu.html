@@ -7,14 +7,20 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>AddMenu</ion-title>
+    <ion-title>เพิ่มรายการอาหาร</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <h3>เพิ่มรายการอาหาร</h3>
-  <input type="text" [(ngModel)]="mymodel.name" name="name">
+  <br><br><br>
+    <ion-grid>
+        <ion-row>
+          <ion-col col-3><h6>ชื่ออาหาร</h6></ion-col>
+          <ion-col col-3><input type="text" [(ngModel)]="mymodel.name" name="name"></ion-col>
+        </ion-row>
+    </ion-grid>
+  <br><br><br>
   <button ion-button block (click)="back()">เพิ่ม</button>
 </ion-content>
