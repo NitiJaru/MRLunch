@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AddshopPage } from '../addshop/addshop';
 import { ManageMenuPage } from '../manage-menu/manage-menu';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * Generated class for the ManageshopPage page.
@@ -17,7 +18,8 @@ import { ManageMenuPage } from '../manage-menu/manage-menu';
 })
 export class ManageshopPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  getshop :any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,private http: HttpClient) {
   }
 
   ionViewDidLoad() {
@@ -29,5 +31,16 @@ export class ManageshopPage {
   }
   managemenu(){
     this.navCtrl.push(ManageMenuPage);
+  }
+
+  ionViewDidEnter() {
+    this.http.get("https://mrlunch.azurewebsites.net/api/Restaurant/GetRestaurants")
+    .subscribe((data: any) => {
+      this.getshop = data
+      console.log(data);
+    },
+      error => {
+        alert("Error: " + error + "\nError message: " + error.message + "\nError result: " + error.error)
+      });
   }
 }

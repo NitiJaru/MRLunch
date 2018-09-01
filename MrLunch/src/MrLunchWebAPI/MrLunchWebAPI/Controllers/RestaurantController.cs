@@ -32,7 +32,7 @@ namespace MrLunchWebAPI.Controllers
         {
             return _collectionRestaurants.Find(it => true).ToList();
         }
-        
+
         [HttpGet]
         public Restaurant GetRestaurant(string id)
         {
@@ -42,13 +42,31 @@ namespace MrLunchWebAPI.Controllers
         [HttpPost]
         public Response CreateRestaurant([FromBody]Restaurant model)
         {
-            if (model != null)
-            {
-                model.Id = Guid.NewGuid().ToString();
-                _collectionRestaurants.InsertOne(model);
-                return new Response { IsSuccess = true };
-            }
-            return new Response { IsSuccess = false, ErrorMessage = "Data can not be empty" };
+            var isValidateData = model != null && string.IsNullOrWhiteSpace(model.Name);
+            if (!isValidateData) return new Response { IsSuccess = false, ErrorMessage = "Data can not be empty" };
+
+            model.Id = Guid.NewGuid().ToString();
+            model.Menus = Enumerable.Empty<RestaurantMenu>();
+            _collectionRestaurants.InsertOne(model);
+            return new Response { IsSuccess = true };
+        }
+
+        [HttpPost("{id}")]
+        public Response AddMenuToRestaurant(string id, [FromBody]RestaurantMenu model)
+        {
+            var isValidateData = model != null && string.IsNullOrWhiteSpace(model.Name);
+            if (!isValidateData) return new Response { IsSuccess = false, ErrorMessage = "Data can not be empty" };
+
+            var restaurant = _collectionRestaurants.Find(it => it.Id == id).FirstOrDefault();
+            if (restaurant == null) { return new Response { IsSuccess = false, ErrorMessage = "Restaurant id can not found" }; }
+
+            model.Id = Guid.NewGuid().ToString();
+            var menus = restaurant.Menus.ToList();
+            menus.Add(model);
+            restaurant.Menus = menus;
+            _collectionRestaurants.ReplaceOne(it => it.Id == id, restaurant);
+            return new Response { IsSuccess = true };
+
         }
 
     }

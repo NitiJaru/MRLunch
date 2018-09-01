@@ -28,8 +28,6 @@
 
   <ion-item-group>
     <ion-list-header>3 ร้าน</ion-list-header>
-    <ion-item (click)="managemenu()">เป๋าตุง</ion-item>
-    <ion-item (click)="managemenu()">เพราแท้</ion-item>
-    <ion-item (click)="managemenu()">พาอร่อย</ion-item>
+    <ion-item (click)="managemenu()" *ngFor="let data of getshop">{{data.name}}</ion-item>
   </ion-item-group>
 </ion-content>
