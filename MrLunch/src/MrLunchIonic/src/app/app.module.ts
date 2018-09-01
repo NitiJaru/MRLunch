@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { CreatlistPage } from '../pages/creatlist/creatlist';
+import { ChoosemenuPage } from '../pages/choosemenu/choosemenu';
 import { ManageshopPage } from '../pages/manageshop/manageshop';
 import { AddshopPage } from '../pages/addshop/addshop';
 import { AddMenuPage } from '../pages/add-menu/add-menu';
@@ -14,6 +16,9 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 @NgModule({
   declarations: [
     MyApp,
+    HomePage,
+    CreatlistPage,
+    ChoosemenuPage
     HomePage,
     ManageshopPage,
     AddshopPage,
@@ -28,6 +33,9 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    HomePage,
+    CreatlistPage,
+    ChoosemenuPage
     HomePage,
     ManageshopPage,
     AddshopPage,
