@@ -3,8 +3,14 @@
     <ion-title>
       <p align="center">MR.LUNCH</p>
     </ion-title>
-    <ion-buttons right>
-      <button (click)="Gomanage()"><ion-icon name="construct"></ion-icon></button>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="Gomanage()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+      <button ion-button icon-only *ngIf="model != null" (click)="viewpoll()">
+        <ion-icon name="more"></ion-icon>
+      </button>
     </ion-buttons>
 
   </ion-navbar>
@@ -21,11 +27,20 @@
     <h3 align="center">ลิสต์สั่งอาหาร</h3>
     <p align="center">{{ model.restaurantName }}</p>
     <p align="center">{{ model.closedDate }}</p>
+    <hr>
     <ion-list>
       <ion-item *ngFor="let item of model.menuPolls" (click)="selectmenu(item.id)">
+        <ion-icon name="checkmark-circle" *ngIf="selectmenuid == item.id"></ion-icon>
         {{ item.name }}
       </ion-item>
     </ion-list>
   </div>
 
+
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button block (click)="submit()">ยืนยันสั่งอาหาร</button>
+  </ion-toolbar>
+</ion-footer>
