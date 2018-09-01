@@ -6,26 +6,34 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar text-center>
     <ion-title>เพิ่มร้านสั่งอาหาร</ion-title>
   </ion-navbar>
   <ion-item>
   <ion-label>เลือกร้าน</ion-label>
   <ion-select [(ngModel)]="Select">
-    <ion-option value="f">เป๋าตุง</ion-option>
-    <ion-option value="m">กระเพราแท้</ion-option>
-    <ion-option value="m">พาอร่อย</ion-option>
+    <ion-option value="store1">เป๋าตุง</ion-option>
+    <ion-option value="store2">กระเพราแท้</ion-option>
+    <ion-option value="store3">พาอร่อย</ion-option>
   </ion-select>
 </ion-item>
 <ion-item>
     <ion-input placeholder="เมนู default" clearInput></ion-input>
   </ion-item><br>
-  <ion-input placeholder="จำนวนคนขั้นต่ำ" clearInput></ion-input>
-  <ion-input placeholder="เวลาปิดให้สั่ง" clearInput></ion-input>
+  <ion-list>
+  <ion-item>
+    <ion-label color="primary">จำนวนคนขั้นต่ำ :</ion-label>
+    <ion-input placeholder=""></ion-input>
+  </ion-item>
+</ion-list>
+<ion-item>
+  <ion-label>เวลา</ion-label>
+  <ion-datetime displayFormat="HH:mm" [(ngModel)]="myDate"></ion-datetime>
+</ion-item>
 
   <ion-row>
   <ion-col text-center>
-    <button ion-button (click)="GochooseMenu()">OK</button>
+    <button ion-button block (click)="GochooseMenu()">OK</button>
   </ion-col>
 </ion-row>
 

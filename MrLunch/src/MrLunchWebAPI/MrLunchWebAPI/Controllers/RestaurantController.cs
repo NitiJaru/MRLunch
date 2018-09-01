@@ -14,7 +14,6 @@ namespace MrLunchWebAPI.Controllers
     {
         private const string ConnectionString = @"mongodb://earn:e09545321@ds141872.mlab.com:41872/mrlunch";
         private const string DatabaseName = @"mrlunch";
-
         private const string CollectionRestaurant = @"restaurants";
 
         private IMongoDatabase _database;
@@ -26,14 +25,14 @@ namespace MrLunchWebAPI.Controllers
             _database = client.GetDatabase(DatabaseName);
             _collectionRestaurants = _database.GetCollection<Restaurant>(CollectionRestaurant);
         }
-
+        
         [HttpGet]
         public IEnumerable<Restaurant> GetRestaurants()
         {
             return _collectionRestaurants.Find(it => true).ToList();
         }
 
-        [HttpGet]
+        [HttpGet("{id}")]
         public Restaurant GetRestaurant(string id)
         {
             return _collectionRestaurants.Find(it => it.Id == id).FirstOrDefault();
@@ -42,7 +41,7 @@ namespace MrLunchWebAPI.Controllers
         [HttpPost]
         public Response CreateRestaurant([FromBody]Restaurant model)
         {
-            var isValidateData = model != null && string.IsNullOrWhiteSpace(model.Name);
+            var isValidateData = model != null && !string.IsNullOrWhiteSpace(model.Name);
             if (!isValidateData) return new Response { IsSuccess = false, ErrorMessage = "Data can not be empty" };
 
             model.Id = Guid.NewGuid().ToString();
@@ -54,7 +53,7 @@ namespace MrLunchWebAPI.Controllers
         [HttpPost("{id}")]
         public Response AddMenuToRestaurant(string id, [FromBody]RestaurantMenu model)
         {
-            var isValidateData = model != null && string.IsNullOrWhiteSpace(model.Name);
+            var isValidateData = model != null && !string.IsNullOrWhiteSpace(model.Name);
             if (!isValidateData) return new Response { IsSuccess = false, ErrorMessage = "Data can not be empty" };
 
             var restaurant = _collectionRestaurants.Find(it => it.Id == id).FirstOrDefault();
@@ -68,6 +67,5 @@ namespace MrLunchWebAPI.Controllers
             return new Response { IsSuccess = true };
 
         }
-
     }
 }
