@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the ResualPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { HttpClient } from '@angular/common/http';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/timeout';
 
 @IonicPage()
 @Component({
@@ -15,11 +11,15 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ResualPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  model: any = { };
+  constructor(public navCtrl: NavController, public navParams: NavParams, private httpClient: HttpClient) {
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ResualPage');
+    this.httpClient.get("https://mrlunch.azurewebsites.net/api/polls/getrestaurantPoll/" + this.navParams.data)
+      .subscribe((data: any) => {
+        this.model = data;
+      }, error => {
+        alert(error.message);
+      });
   }
 
 }

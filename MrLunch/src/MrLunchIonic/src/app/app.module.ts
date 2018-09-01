@@ -11,8 +11,10 @@ import { ChoosemenuPage } from '../pages/choosemenu/choosemenu';
 import { ManageshopPage } from '../pages/manageshop/manageshop';
 import { AddshopPage } from '../pages/addshop/addshop';
 import { AddMenuPage } from '../pages/add-menu/add-menu';
+import { ResualPage } from '../pages/resual/resual';
 import { ManageMenuPage } from '../pages/manage-menu/manage-menu';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -23,6 +25,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     ManageMenuPage,
     CreatlistPage,
     ChoosemenuPage,
+    ResualPage
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     ManageMenuPage,
     CreatlistPage,
     ChoosemenuPage,
+    ResualPage
   ],
   providers: [
     StatusBar,

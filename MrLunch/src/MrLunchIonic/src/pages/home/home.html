@@ -3,15 +3,44 @@
     <ion-title>
       <p align="center">MR.LUNCH</p>
     </ion-title>
-    <ion-buttons right>
-      <button (click)="Gomanage()"><ion-icon name="construct"></ion-icon></button>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="Gomanage()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+      <button ion-button icon-only *ngIf="model != null" (click)="viewpoll()">
+        <ion-icon name="more"></ion-icon>
+      </button>
     </ion-buttons>
 
   </ion-navbar>
 </ion-header>
 
-<ion-content >
-    <!-- <button ion-button block (click)="Gomanage()">เพิ่มลิสต์อาหารประจำวัน</button> -->
-    <button ion-button block (click)="createpoll()">เพิ่มลิสต์อาหารประจำวัน</button>
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <button *ngIf="model == null" ion-button block (click)="createpoll()">เพิ่มลิสต์อาหารประจำวัน</button>
+
+  <div *ngIf="model != null">
+    <h3 align="center">ลิสต์สั่งอาหาร</h3>
+    <p align="center">{{ model.restaurantName }}</p>
+    <p align="center">{{ model.closedDate }}</p>
+    <hr>
+    <ion-list>
+      <ion-item *ngFor="let item of model.menuPolls" (click)="selectmenu(item.id)">
+        <ion-icon name="checkmark-circle" *ngIf="selectmenuid == item.id"></ion-icon>
+        {{ item.name }}
+      </ion-item>
+    </ion-list>
+  </div>
+
 
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button block (click)="submit()">ยืนยันสั่งอาหาร</button>
+  </ion-toolbar>
+</ion-footer>
